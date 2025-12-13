@@ -1,199 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ficha Etlans RPG</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Georgia, serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a0f0f 100%); color: #d4af37; min-height: 100vh; padding: 20px; }
-.container { max-width: 1400px; margin: 0 auto; }
-.menu { display: none; text-align: center; }
-.menu.active { display: block; }
-.menu h1 { font-size: 3.5em; margin: 40px 0; color: #d4af37; text-shadow: 4px 4px 8px rgba(0,0,0,0.8); letter-spacing: 2px; }
-.btn { background: #6b4423; border: 1px solid #8b4513; color: #d4af37; padding: 12px 24px; cursor: pointer; border-radius: 4px; margin: 8px; font-size: 1em; transition: all 0.3s; font-family: Georgia, serif; }
-.btn:hover { background: #8b5a2b; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
-.btn-add { background: #3a6b3a; }
-.btn-add:hover { background: #4a8b4a; }
-.btn-remove { background: #8b3a3a; }
-.btn-remove:hover { background: #a04a4a; }
-.char-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; }
-.char-card { background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%); border: 2px solid #8b4513; border-radius: 8px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-.char-card:hover { border-color: #d4af37; box-shadow: 0 0 20px rgba(212,175,55,0.3); }
-.char-card h3 { color: #d4af37; margin-bottom: 15px; }
-.char-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-.char-actions button { flex: 1; }
-.blk { background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border: 1px solid #8b4513; border-radius: 6px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-.blk h2 { color: #d4af37; font-size: 1.3em; margin-bottom: 15px; border-bottom: 2px solid #6b4423; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-.fld { display: flex; flex-direction: column; margin: 12px 0; }
-.fld label { color: #a0826d; text-transform: uppercase; margin-bottom: 5px; font-size: 0.85em; font-weight: bold; }
-.fld input, .fld textarea { background: #0a0a0a; border: 1px solid #6b4423; color: #d4af37; padding: 8px; border-radius: 3px; }
-.fld textarea { resize: vertical; min-height: 80px; }
-.grd2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-@media (max-width: 1200px) { .grd2 { grid-template-columns: 1fr; } }
-.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; }
-.chk { display: flex; align-items: center; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 4px; }
-.chk input { margin-right: 12px; cursor: pointer; width: 18px; height: 18px; }
-.chk label { cursor: pointer; margin: 0; flex: 1; }
-.tbl { width: 100%; border-collapse: collapse; margin-top: 10px; }
-.tbl th, .tbl td { padding: 10px; text-align: left; border-bottom: 1px solid #6b4423; }
-.tbl th { background: #0a0a0a; color: #a0826d; font-weight: bold; text-transform: uppercase; }
-.sm-btn { padding: 4px 8px; font-size: 0.8em; }
-.mdl { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
-.mdl.active { display: flex; }
-.mdl-cnt { background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%); border: 2px solid #8b4513; border-radius: 8px; padding: 30px; max-width: 600px; width: 90%; }
-.mdl-cnt h2 { color: #d4af37; margin-bottom: 20px; }
-.hdr { background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%); border: 2px solid #8b4513; border-radius: 8px; padding: 25px; margin: 20px 0; }
-.hdr h1 { color: #d4af37; font-size: 2.5em; margin-bottom: 15px; }
-.tbr { display: flex; justify-content: space-between; align-items: center; margin: 20px 0; flex-wrap: wrap; gap: 10px; }
-.tbr h2 { color: #d4af37; margin: 0; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Etlans RPG</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Georgia, serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0f0f 100%);
+            color: #d4af37;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 2.5em; text-align: center; margin: 20px 0; color: #d4af37; text-shadow: 4px 4px 8px rgba(0,0,0,0.8); }
+        p { text-align: center; margin-bottom: 20px; color: #a0826d; }
+        .btn { background: #6b4423; border: 1px solid #8b4513; color: #d4af37; padding: 10px 20px; cursor: pointer; border-radius: 4px; margin: 5px; font-family: Georgia, serif; font-size: 0.95em; }
+        .btn:hover { background: #8b5a2b; }
+        .char-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin: 20px 0; }
+        .char-card { background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%); border: 2px solid #8b4513; border-radius: 8px; padding: 15px; }
+        .char-card h3 { color: #d4af37; margin-bottom: 10px; }
+        .char-actions { display: flex; gap: 10px; margin-top: 10px; }
+        #menu { display: block; }
+        #sheet { display: none; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%); border: 2px solid #8b4513; border-radius: 8px; padding: 30px; max-width: 500px; width: 90%; }
+        .modal-content h2 { color: #d4af37; margin-bottom: 15px; }
+        .form-group { margin: 15px 0; }
+        .form-group label { display: block; color: #a0826d; text-transform: uppercase; margin-bottom: 5px; font-size: 0.85em; }
+        .form-group input, .form-group textarea { width: 100%; background: #0a0a0a; border: 1px solid #6b4423; color: #d4af37; padding: 8px; border-radius: 3px; font-family: Georgia, serif; }
+        .blk { background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border: 1px solid #8b4513; border-radius: 6px; padding: 15px; margin: 15px 0; }
+        .blk h2 { color: #d4af37; font-size: 1.2em; margin-bottom: 10px; border-bottom: 2px solid #6b4423; padding-bottom: 8px; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div id="menu">
+            <h1>ETLANS RPG</h1>
+            <p>Sistema de Fichas</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn" onclick="openCreateModal()">Criar Novo Personagem</button>
+            </div>
+            <div id="charList" class="char-list"></div>
+        </div>
 
-<div id="menuScreen" class="menu active">
-<div class="container">
-<h1>ETLANS RPG</h1>
-<p style="color: #a0826d; font-size: 1.2em; margin: 20px 0 40px 0;">Sistema de Fichas</p>
-<button class="btn" onclick="showCreateModal()">Criar Novo Personagem</button>
-<button class="btn" onclick="showSettings()">Configuracoes</button>
-<div class="char-list" id="charList"></div>
-</div>
-</div>
+        <div id="sheet" style="display: none;">
+            <h1 id="charName">Ficha</h1>
+            <button class="btn" onclick="closeSheet()" style="margin: 10px;">← Voltar ao Menu</button>
+            <div id="sheetContent"></div>
+        </div>
+    </div>
 
-<div id="sheetScreen" style="display:none;">
-<div class="container">
-<div class="tbr">
-<button class="btn" onclick="backMenu()">Voltar</button>
-<h2 id="charTitle">Ficha</h2>
-<button class="btn" onclick="showSettings()">Configuracoes</button>
-</div>
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <h2>Criar Novo Personagem</h2>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="newCharName" placeholder="Nome do personagem">
+            </div>
+            <button class="btn" onclick="createCharacter()" style="width: 48%; margin-right: 2%;">Criar</button>
+            <button class="btn" onclick="closeCreateModal()" style="width: 48%;">Cancelar</button>
+        </div>
+    </div>
 
-<div class="hdr">
-<h1>FICHA DE PERSONAGEM</h1>
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">
-<div class="fld"><label>Nome</label><input type="text" id="name" onchange="save()"></div>
-<div class="fld"><label>Jogador</label><input type="text" id="player" onchange="save()"></div>
-<div class="fld"><label>Historico</label><input type="text" id="historico" onchange="save()"></div>
-<div class="fld"><label>Arquetipo</label><input type="text" id="arquetipo" onchange="save()"></div>
-</div>
-</div>
+    <script>
+        let characters = [];
+        let currentId = null;
 
-<div class="grd2">
-<div class="blk">
-<h2>ATRIBUTOS FISICOS</h2>
-<div class="row">
-<div class="fld"><label>FOR</label><input type="number" id="FOR" min="0" onchange="save()"></div>
-<div class="fld"><label>DES</label><input type="number" id="DES" min="0" onchange="save()"></div>
-<div class="fld"><label>VIG</label><input type="number" id="VIG" min="0" onchange="save()"></div>
-</div>
-<h2 style="margin-top:20px;">ATRIBUTOS SOCIAIS</h2>
-<div class="row">
-<div class="fld"><label>PRE</label><input type="number" id="PRE" min="0" onchange="save()"></div>
-<div class="fld"><label>INT</label><input type="number" id="INT" min="0" onchange="save()"></div>
-<div class="fld"><label>MAN</label><input type="number" id="MAN" min="0" onchange="save()"></div>
-</div>
-<h2 style="margin-top:20px;">ATRIBUTOS MENTAIS</h2>
-<div class="row">
-<div class="fld"><label>SEN</label><input type="number" id="SEN" min="0" onchange="save()"></div>
-<div class="fld"><label>VON</label><input type="number" id="VON" min="0" onchange="save()"></div>
-<div class="fld"><label>RES</label><input type="number" id="RES" min="0" onchange="save()"></div>
-</div>
-</div>
+        function loadData() {
+            const saved = localStorage.getItem('etlans_chars');
+            characters = saved ? JSON.parse(saved) : [];
+            renderList();
+        }
 
-<div class="blk">
-<h2>RECURSOS</h2>
-<div class="row">
-<div class="fld"><label>Vida (PV)</label><input type="number" id="pv" min="0" onchange="save()"></div>
-<div class="fld"><label>Foco (PF)</label><input type="number" id="pf" min="0" onchange="save()"></div>
-<div class="fld"><label>Energia (PE)</label><input type="number" id="pe" min="0" onchange="save()"></div>
-<div class="fld"><label>Movimento</label><input type="number" id="pm" min="0" onchange="save()"></div>
-<div class="fld"><label>Armadura</label><input type="number" id="armor" min="0" onchange="save()"></div>
-<div class="fld"><label>Proficiencias</label><input type="text" id="proficiencias" onchange="save()"></div>
-</div>
-</div>
-</div>
+        function saveData() {
+            localStorage.setItem('etlans_chars', JSON.stringify(characters));
+        }
 
-<div class="blk">
-<h2>PERICIAS</h2>
-<div class="row" style="grid-template-columns: repeat(3, 1fr);">
-<div class="fld"><label>Academicos</label><input type="number" id="pAcad" min="0" onchange="save()"></div>
-<div class="fld"><label>Arma Dist</label><input type="number" id="pArmaDist" min="0" onchange="save()"></div>
-<div class="fld"><label>Arma Branca</label><input type="number" id="pArmaBr" min="0" onchange="save()"></div>
-<div class="fld"><label>Atletismo</label><input type="number" id="pAtle" min="0" onchange="save()"></div>
-<div class="fld"><label>Escala</label><input type="number" id="pEsc" min="0" onchange="save()"></div>
-<div class="fld"><label>Enganacao</label><input type="number" id="pEng" min="0" onchange="save()"></div>
-<div class="fld"><label>Intuicao</label><input type="number" id="pInt" min="0" onchange="save()"></div>
-<div class="fld"><label>Luta</label><input type="number" id="pLuta" min="0" onchange="save()"></div>
-<div class="fld"><label>Medicina</label><input type="number" id="pMed" min="0" onchange="save()"></div>
-<div class="fld"><label>Ocultismo</label><input type="number" id="pOcul" min="0" onchange="save()"></div>
-<div class="fld"><label>Profissao</label><input type="number" id="pProf" min="0" onchange="save()"></div>
-<div class="fld"><label>Reflexos</label><input type="number" id="pRef" min="0" onchange="save()"></div>
-</div>
-</div>
+        function renderList() {
+            const list = document.getElementById('charList');
+            list.innerHTML = '';
+            characters.forEach(char => {
+                const card = document.createElement('div');
+                card.className = 'char-card';
+                card.innerHTML = `
+                    <h3>${char.name}</h3>
+                    <p>${char.classe || 'Sem classe'}</p>
+                    <div class="char-actions">
+                        <button class="btn" onclick="openCharacter(${char.id})">Abrir</button>
+                        <button class="btn" onclick="deleteCharacter(${char.id})">Apagar</button>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+        }
 
-<div class="blk">
-<h2>COMBATE</h2>
-<div class="fld"><label>Arma</label><input type="text" id="cbArma" onchange="save()"></div>
-<div class="fld"><label>Dano</label><input type="text" id="cbDano" onchange="save()"></div>
-<div class="fld"><label>Critico</label><input type="text" id="cbCrit" onchange="save()"></div>
-<div class="fld"><label>Distancia</label><input type="text" id="cbDist" onchange="save()"></div>
-<div class="fld"><label>Tipo</label><input type="text" id="cbTipo" onchange="save()"></div>
-<div class="fld"><label>Peso</label><input type="text" id="cbPeso" onchange="save()"></div>
-</div>
+        function openCreateModal() {
+            document.getElementById('createModal').classList.add('active');
+        }
 
-<div class="blk">
-<h2>HABILIDADES ETLANS</h2>
-<button class="btn btn-add" onclick="addHab()">+ Habilidade</button>
-<div id="habList"></div>
-</div>
+        function closeCreateModal() {
+            document.getElementById('createModal').classList.remove('active');
+            document.getElementById('newCharName').value = '';
+        }
 
-<div class="blk">
-<h2>INVENTARIO</h2>
-<button class="btn btn-add" onclick="addInv()">+ Item</button>
-<table class="tbl" id="invTable"></table>
-</div>
+        function createCharacter() {
+            const name = document.getElementById('newCharName').value.trim();
+            if (!name) { alert('Digite um nome'); return; }
+            const char = { id: Date.now(), name: name, classe: '' };
+            characters.push(char);
+            saveData();
+            closeCreateModal();
+            openCharacter(char.id);
+        }
 
-<div class="blk">
-<h2>EFEITOS NEGATIVOS</h2>
-<button class="btn btn-add" onclick="addEfeit()">+ Efeito</button>
-<div id="efeitList" class="chk"></div>
-</div>
+        function openCharacter(id) {
+            const char = characters.find(c => c.id === id);
+            if (!char) return;
+            currentId = id;
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('sheet').style.display = 'block';
+            document.getElementById('charName').textContent = char.name;
+            document.getElementById('sheetContent').innerHTML = `
+                <div class="blk">
+                    <h2>Informações Básicas</h2>
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" value="${char.name}" onchange="updateChar('name', this.value)">
+                    </div>
+                    <div class="form-group">
+                        <label>Classe</label>
+                        <input type="text" value="${char.classe || ''}" onchange="updateChar('classe', this.value)">
+                    </div>
+                </div>
+                <button class="btn" onclick="saveSheet()" style="margin: 10px 0;">Salvar Ficha</button>
+            `;
+        }
 
-<div class="blk">
-<h2>HISTORICO & ANOTACOES</h2>
-<div class="fld"><label>Historico Pessoal</label><textarea id="hist" onchange="save()"></textarea></div>
-<div class="fld"><label>Anotacoes</label><textarea id="notas" onchange="save()"></textarea></div>
-</div>
+        function updateChar(field, value) {
+            const char = characters.find(c => c.id === currentId);
+            if (char) char[field] = value;
+        }
 
-</div>
-</div>
+        function saveSheet() {
+            saveData();
+            alert('Ficha salva!');
+        }
 
-<div id="createMdl" class="mdl">
-<div class="mdl-cnt">
-<h2>Criar Novo Personagem</h2>
-<div class="fld"><label>Nome</label><input type="text" id="newCharName" placeholder="Digite o nome"></div>
-<button class="btn" onclick="create()">Criar</button>
-<button class="btn" onclick="closeMdl()">Cancelar</button>
-</div>
-</div>
+        function closeSheet() {
+            saveData();
+            document.getElementById('sheet').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+            renderList();
+        }
 
-<div id="setMdl" class="mdl">
-<div class="mdl-cnt">
-<h2>Configuracoes</h2>
-<button class="btn" onclick="exportChar()">Exportar Ficha</button>
-<button class="btn" onclick="tglImp()">Importar Ficha</button>
-<button class="btn" onclick="reset()">Resetar Tudo</button>
-<div id="impDiv" style="display:none; margin-top:15px;">
-<textarea id="impText" placeholder="Cole JSON aqui" style="width:100%; height:150px; background:#0a0a0a; border:1px solid #6b4423; color:#d4af37; padding:10px; border-radius:3px;"></textarea>
-<button class="btn" onclick="importChar()">Importar</button>
-</div>
-<button class="btn" onclick="closeMdl()">Fechar</button>
-</div>
-</div>
+        function deleteCharacter(id) {
+            if (!confirm('Tem certeza que quer apagar?')) return;
+            characters = characters.filter(c => c.id !== id);
+            saveData();
+            renderList();
+        }
 
-<script>
-let chars=[],curId=null;function save(){if(curId){let c=chars.find(x=>x.id===curId);if(c){c.data={name:g('name').value,player:g('player').value,historico:g('historico').value,arquetipo:g('arquetipo').value,FOR:g('FOR').value,DES:g('DES').value,VIG:g('VIG').value,PRE:g('PRE').value,INT:g('INT').value,MAN:g('MAN').value,SEN:g('SEN').value,VON:g('VON').value,RES:g('RES').value,pv:g('pv').value,pf:g('pf').value,pe:g('pe').value,pm:g('pm').value,armor:g('armor').value,proficiencias:g('proficiencias').value,pAcad:g('pAcad').value,pArmaDist:g('pArmaDist').value,pArmaBr:g('pArmaBr').value,pAtle:g('pAtle').value,pEsc:g('pEsc').value,pEng:g('pEng').value,pInt:g('pInt').value,pLuta:g('pLuta').value,pMed:g('pMed').value,pOcul:g('pOcul').value,pProf:g('pProf').value,pRef:g('pRef').value,cbArma:g('cbArma').value,cbDano:g('cbDano').value,cbCrit:g('cbCrit').value,cbDist:g('cbDist').value,cbTipo:g('cbTipo').value,cbPeso:g('cbPeso').value,hist:g('hist').value,notas:g('notas').value,hab:JSON.parse(g('habList').dataset.hab||'[]'),inv:JSON.parse(g('invTable').dataset.inv||'[]'),efeit:JSON.parse(g('efeitList').dataset.efeit||'[]')};localStorage.setItem('etlans',JSON.stringify(chars));}}}function load(){let s=localStorage.getItem('etlans');if(s)chars=JSON.parse(s);render();}function g(i){return document.getElementById(i);}function render(){let l=g('charList');l.innerHTML='';chars.forEach(c=>{let d=document.createElement('div');d.className='char-card';d.innerHTML=`<h3>${c.name}</h3><div class="char-actions"><button class="btn" onclick="open('${c.id}')">Abrir</button><button class="btn" onclick="renome('${c.id}')">Renomear</button><button class="btn btn-remove" onclick="del('${c.id}')">Excluir</button></div>`;l.appendChild(d);});}function showCreateModal(){g('createMdl').classList.add('active');}function closeMdl(){document.querySelectorAll('.mdl').forEach(m=>m.classList.remove('active'));g('impDiv').style.display='none';}function create(){let n=g('newCharName').value.trim();if(n){let id='c'+Date.now();chars.push({id:id,name:n,data:{}});localStorage.setItem('etlans',JSON.stringify(chars));g('newCharName').value='';closeMdl();render();open(id);}}function open(id){curId=id;let c=chars.find(x=>x.id===id);let d=c.data||{};g('menuScreen').classList.remove('active');g('sheetScreen').style.display='block';g('charTitle').innerText=c.name;g('name').value=d.name||'';g('player').value=d.player||'';g('historico').value=d.historico||'';g('arquetipo').value=d.arquetipo||'';g('FOR').value=d.FOR||'';g('DES').value=d.DES||'';g('VIG').value=d.VIG||'';g('PRE').value=d.PRE||'';g('INT').value=d.INT||'';g('MAN').value=d.MAN||'';g('SEN').value=d.SEN||'';g('VON').value=d.VON||'';g('RES').value=d.RES||'';g('pv').value=d.pv||'';g('pf').value=d.pf||'';g('pe').value=d.pe||'';g('pm').value=d.pm||'';g('armor').value=d.armor||'';g('proficiencias').value=d.proficiencias||'';g('pAcad').value=d.pAcad||'';g('pArmaDist').value=d.pArmaDist||'';g('pArmaBr').value=d.pArmaBr||'';g('pAtle').value=d.pAtle||'';g('pEsc').value=d.pEsc||'';g('pEng').value=d.pEng||'';g('pInt').value=d.pInt||'';g('pLuta').value=d.pLuta||'';g('pMed').value=d.pMed||'';g('pOcul').value=d.pOcul||'';g('pProf').value=d.pProf||'';g('pRef').value=d.pRef||'';g('cbArma').value=d.cbArma||'';g('cbDano').value=d.cbDano||'';g('cbCrit').value=d.cbCrit||'';g('cbDist').value=d.cbDist||'';g('cbTipo').value=d.cbTipo||'';g('cbPeso').value=d.cbPeso||'';g('hist').value=d.hist||'';g('notas').value=d.notas||'';renderHab(d.hab||[]);renderInv(d.inv||[]);renderEfeit(d.efeit||[]);}function backMenu(){save();g('sheetScreen').style.display='none';g('menuScreen').classList.add('active');curId=null;}function renome(id){let c=chars.find(x=>x.id===id);let nn=prompt('Novo nome:',c.name);if(nn){c.name=nn;localStorage.setItem('etlans',JSON.stringify(chars));render();}}function del(id){if(confirm('Deletar?')){chars=chars.filter(x=>x.id!==id);localStorage.setItem('etlans',JSON.stringify(chars));render();}}function showSettings(){g('setMdl').classList.add('active');}function tglImp(){g('impDiv').style.display=g('impDiv').style.display=='none'?'block':'none';}function exportChar(){if(curId){let c=chars.find(x=>x.id===curId);let j=JSON.stringify(c);alert('JSON:\n\n'+j);}}function importChar(){let j=g('impText').value;try{let o=JSON.parse(j);if(o.name&&o.data){chars.push(o);localStorage.setItem('etlans',JSON.stringify(chars));render();closeMdl();}}catch(e){alert('JSON invalido');}}function reset(){if(confirm('Resetar TUDO?')){chars=[];localStorage.removeItem('etlans');render();backMenu();}}function addHab(){if(curId){let h=JSON.parse(g('habList').dataset.hab||'[]');h.push({nome:'',desc:''});g('habList').dataset.hab=JSON.stringify(h);renderHab(h);}}function renderHab(h){let l=g('habList');l.innerHTML='';l.dataset.hab=JSON.stringify(h);h.forEach((x,i)=>{let d=document.createElement('div');d.style.marginBottom='15px';d.innerHTML=`<div class="fld"><label>Nome</label><input type="text" value="${x.nome||''}" onchange="updHab(${i},'nome',this.value)"></div><div class="fld"><label>Descricao</label><textarea onchange="updHab(${i},'desc',this.value)" style="min-height:60px;">${x.desc||''}</textarea></div><button class="btn btn-remove sm-btn" onclick="delHab(${i})">Remover</button>`;l.appendChild(d);});}function updHab(i,k,v){if(curId){let h=JSON.parse(g('habList').dataset.hab||'[]');h[i][k]=v;g('habList').dataset.hab=JSON.stringify(h);save();}}function delHab(i){if(curId){let h=JSON.parse(g('habList').dataset.hab||'[]');h.splice(i,1);g('habList').dataset.hab=JSON.stringify(h);renderHab(h);save();}}function addInv(){if(curId){let iv=JSON.parse(g('invTable').dataset.inv||'[]');iv.push({item:'',qtd:1,custo:''});g('invTable').dataset.inv=JSON.stringify(iv);renderInv(iv);}}function renderInv(iv){let t=g('invTable');t.innerHTML='<tr><th>Item</th><th>Qtd</th><th>Custo</th><th></th></tr>';t.dataset.inv=JSON.stringify(iv);iv.forEach((x,i)=>{let r=t.insertRow();r.innerHTML=`<td><input type="text" value="${x.item||''}" onchange="updInv(${i},'item',this.value)" style="width:100%; background:#0a0a0a; border:1px solid #6b4423; color:#d4af37; padding:6px;"></td><td><input type="number" value="${x.qtd||1}" onchange="updInv(${i},'qtd',this.value)" style="width:60px; background:#0a0a0a; border:1px solid #6b4423; color:#d4af37; padding:6px;"></td><td><input type="text" value="${x.custo||''}" onchange="updInv(${i},'custo',this.value)" style="width:100%; background:#0a0a0a; border:1px solid #6b4423; color:#d4af37; padding:6px;"></td><td><button class="btn btn-remove sm-btn" onclick="delInv(${i})">X</button></td>`;});}function updInv(i,k,v){if(curId){let iv=JSON.parse(g('invTable').dataset.inv||'[]');iv[i][k]=v;g('invTable').dataset.inv=JSON.stringify(iv);save();}}function delInv(i){if(curId){let iv=JSON.parse(g('invTable').dataset.inv||'[]');iv.splice(i,1);g('invTable').dataset.inv=JSON.stringify(iv);renderInv(iv);save();}}function addEfeit(){if(curId){let e=JSON.parse(g('efeitList').dataset.efeit||'[]');e.push({nome:'',ativo:false});g('efeitList').dataset.efeit=JSON.stringify(e);renderEfeit(e);}}function renderEfeit(e){let l=g('efeitList');l.innerHTML='';l.dataset.efeit=JSON.stringify(e);e.forEach((x,i)=>{let d=document.createElement('div');d.className='chk';d.innerHTML=`<input type="checkbox" ${x.ativo?'checked':''} onchange="updEfeit(${i},'ativo',this.checked)"><input type="text" value="${x.nome||''}" onchange="updEfeit(${i},'nome',this.value)" style="flex:1; margin:0 10px; background:#0a0a0a; border:1px solid #6b4423; color:#d4af37; padding:6px; border-radius:3px;"><button class="btn btn-remove sm-btn" onclick="delEfeit(${i})">Remover</button>`;l.appendChild(d);});}function updEfeit(i,k,v){if(curId){let e=JSON.parse(g('efeitList').dataset.efeit||'[]');e[i][k]=v;g('efeitList').dataset.efeit=JSON.stringify(e);save();}}function delEfeit(i){if(curId){let e=JSON.parse(g('efeitList').dataset.efeit||'[]');e.splice(i,1);g('efeitList').dataset.efeit=JSON.stringify(e);renderEfeit(e);save();}}window.addEventListener('load',load);
-</script>
+        window.addEventListener('load', loadData);
+    </script>
 </body>
 </html>
