@@ -20,6 +20,7 @@
 [data-theme="emerald"]{--accent:#4cd3a3}
 [data-theme="rose"]{--accent:#c97bff}
 [data-theme="white"]{--accent:#eaeaea;--ink:#111;--bg:#f2f2f2;--panel:#fff;--panel2:#f5f5f5;--border:#ccc}
+
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(circle at top,#151a2e,var(--bg) 70%);color:var(--ink);font-family:Inter,sans-serif}
 .sheet{max-width:1400px;margin:24px auto;padding:28px;background:linear-gradient(180deg,var(--panel),var(--bg));border:1px solid var(--border);border-radius:16px;box-shadow:0 0 40px #000}
@@ -32,34 +33,45 @@ body{margin:0;background:radial-gradient(circle at top,#151a2e,var(--bg) 70%);co
 .field input,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink);padding:6px 4px;font-family:Inter}
 .field textarea{resize:none;min-height:90px}
 .small{width:80px}
+
 .attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .attr-block{background:var(--panel);padding:16px;border-radius:14px;border:1px solid var(--border)}
 .attr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .attr span{font-size:13px}
+
 .pericias-wrap{display:grid;grid-template-columns:340px 1fr;gap:30px}
 .pericias{background:var(--panel);border-radius:14px;padding:16px;border:1px solid var(--border)}
 .pericia{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;cursor:pointer}
 .pericia span{font-size:13px}
 .pericia input{width:80px;text-align:right;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
+
 .combate{background:var(--panel);border-radius:14px;padding:16px;border:1px solid var(--border)}
-.combate table{width:100%;border-collapse:collapse}
-.combate th,.combate td{border-bottom:1px solid var(--border);padding:10px}
+.combate table{width:100%;border-collapse:collapse;table-layout:fixed}
+.combate th,.combate td{border-bottom:1px solid var(--border);padding:10px;overflow:hidden}
 .combate th{font-size:12px;color:var(--muted)}
 .combate input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
+
 .status{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
 .status-box{background:var(--panel2);border:1px solid var(--border);border-radius:14px;width:130px;padding:14px;text-align:center}
 .status-box label{font-size:11px;color:var(--muted)}
 .status-box input{margin-top:8px;width:90px;font-size:20px;text-align:center;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.effects{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+
+.effects-wrapper{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:14px}
+.effects{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 .effects label{font-size:12px;white-space:nowrap}
+
 .list{display:flex;flex-direction:column;gap:12px}
 .list-item{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;display:flex;gap:12px;flex-wrap:wrap}
 .list-item input,.list-item textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.large-notes textarea{min-height:280px;width:100%;background:transparent;border:1px solid var(--border);color:var(--ink)}
+
+.large-notes textarea{min-height:300px;width:100%;background:transparent;border:1px solid var(--border);color:var(--ink)}
+
 button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;color:#fff;padding:10px 18px;border-radius:14px;font-size:12px;cursor:pointer}
+
 .floating{position:fixed;bottom:20px;right:20px;display:flex;gap:14px;z-index:10}
 .theme-panel{position:fixed;bottom:80px;right:20px;display:none;gap:12px}
 .theme-circle{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid #000}
+
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
 .modal-content{background:var(--panel);padding:22px;border-radius:16px;width:380px;border:1px solid var(--border)}
 .modal-content textarea{width:100%;min-height:120px;background:transparent;border:1px solid var(--border);color:var(--ink)}
@@ -142,12 +154,24 @@ button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;colo
 <div class="status-box"><label>Energia</label><input type="number"></div>
 </div>
 <div class="section-title" style="margin-top:18px">Efeitos</div>
+<div class="effects-wrapper">
 <div class="effects">
-<label><input type="checkbox"> Agarrado</label><label><input type="checkbox"> Amedrontado</label><label><input type="checkbox"> Atordoado</label>
-<label><input type="checkbox"> Caído</label><label><input type="checkbox"> Cego</label><label><input type="checkbox"> Envenenado</label>
-<label><input type="checkbox"> Impedido</label><label><input type="checkbox"> Inconsciente</label><label><input type="checkbox"> Paralisado</label>
-<label><input type="checkbox"> Surdo</label><label><input type="checkbox"> Fraturado</label><label><input type="checkbox"> Sangrando</label>
-<label><input type="checkbox"> Em Chamas</label><label><input type="checkbox"> Enfeitiçado</label><label><input type="checkbox"> Desconsciência</label>
+<label><input type="checkbox"> Agarrado</label>
+<label><input type="checkbox"> Amedrontado</label>
+<label><input type="checkbox"> Atordoado</label>
+<label><input type="checkbox"> Caído</label>
+<label><input type="checkbox"> Cego</label>
+<label><input type="checkbox"> Envenenado</label>
+<label><input type="checkbox"> Impedido</label>
+<label><input type="checkbox"> Inconsciente</label>
+<label><input type="checkbox"> Paralisado</label>
+<label><input type="checkbox"> Surdo</label>
+<label><input type="checkbox"> Fraturado</label>
+<label><input type="checkbox"> Sangrando</label>
+<label><input type="checkbox"> Em Chamas</label>
+<label><input type="checkbox"> Enfeitiçado</label>
+<label><input type="checkbox"> Desconsciência</label>
+</div>
 </div>
 </div>
 </div>
@@ -159,9 +183,15 @@ button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;colo
 </div>
 
 <div class="section">
-<div class="section-title">Habilidades / ETLANS</div>
+<div class="section-title">Habilidades</div>
+<div id="habilidades" class="list"></div>
+<button onclick="addHabilidade()">Adicionar Habilidade</button>
+</div>
+
+<div class="section">
+<div class="section-title">Habilidades ETLANS</div>
 <div id="etlans" class="list"></div>
-<button onclick="addEtlans()">Adicionar Habilidade / Etlans</button>
+<button onclick="addEtlans()">Adicionar Etlans</button>
 </div>
 
 <div class="section">
@@ -186,6 +216,7 @@ button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;colo
 <button onclick="toggleThemes()">TEMAS</button>
 <button onclick="saveSheet()">SALVAR</button>
 </div>
+
 <div class="theme-panel" id="themes">
 <div class="theme-circle" style="background:#ff5c5c" onclick="setTheme('red')"></div>
 <div class="theme-circle" style="background:#e6c15a" onclick="setTheme('gold')"></div>
@@ -207,16 +238,46 @@ button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;colo
 let targetDelete=null;
 function toggleThemes(){const t=document.getElementById('themes');t.style.display=t.style.display==='flex'?'none':'flex'}
 function setTheme(name){document.documentElement.setAttribute('data-theme',name);localStorage.setItem('theme',name)}
-function saveSheet(){const data={};document.querySelectorAll('input,textarea').forEach((el,i)=>data[i]=el.value);localStorage.setItem('etlansSheet',JSON.stringify(data));alert('Ficha salva localmente')}
-function loadSheet(){const data=JSON.parse(localStorage.getItem('etlansSheet')||'{}');document.querySelectorAll('input,textarea').forEach((el,i)=>{if(data[i]!==undefined)el.value=data[i]});const t=localStorage.getItem('theme');if(t)setTheme(t)}
+
+function saveSheet(){
+  const data={inputs:[],theme:localStorage.getItem('theme')||''};
+  document.querySelectorAll('input,textarea').forEach(el=>data.inputs.push(el.value));
+  localStorage.setItem('etlansSheet',JSON.stringify(data));
+  alert('Ficha salva localmente');
+}
+function loadSheet(){
+  const raw=localStorage.getItem('etlansSheet');
+  if(!raw)return;
+  const data=JSON.parse(raw);
+  document.querySelectorAll('input,textarea').forEach((el,i)=>{if(data.inputs[i]!==undefined)el.value=data.inputs[i]});
+  if(data.theme)setTheme(data.theme);
+}
 loadSheet();
+
 function openModal(title,el){targetDelete=el;document.getElementById('modalTitle').innerText=title;document.getElementById('modal').style.display='flex'}
 function closeModal(){document.getElementById('modal').style.display='none';targetDelete=null}
 function confirmDelete(){if(targetDelete)targetDelete.remove();closeModal()}
+
 function addPericia(){const d=document.createElement('div');d.className='pericia';d.innerHTML='<span contenteditable>Nova Perícia</span><input type="number" step="0.01">';d.ondblclick=()=>openModal('Excluir Perícia',d);document.getElementById('pericias').appendChild(d)}
-function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';};r.ondblclick=()=>openModal('Excluir Arma',r)}
-function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small"> <textarea placeholder="Descrição"></textarea>';d.ondblclick=()=>openModal('Excluir Item',d);document.getElementById('inventario').appendChild(d)}
-function addEtlans(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <input placeholder="Qtd" class="small"> <input placeholder="Custo" class="small">';d.ondblclick=()=>openModal('Excluir Habilidade / Etlans',d);document.getElementById('etlans').appendChild(d)}
+
+function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';}
+  r.ondblclick=()=>openModal('Excluir Arma',r);
+}
+
+function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small"> <textarea placeholder="Descrição"></textarea>';
+  d.ondblclick=()=>openModal('Excluir Item',d);
+  document.getElementById('inventario').appendChild(d);
+}
+
+function addHabilidade(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <textarea placeholder="Descrição"></textarea>';
+  d.ondblclick=()=>openModal('Excluir Habilidade',d);
+  document.getElementById('habilidades').appendChild(d);
+}
+
+function addEtlans(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <input placeholder="Qtd" class="small"> <input placeholder="Custo" class="small"> <textarea placeholder="Descrição"></textarea>';
+  d.ondblclick=()=>openModal('Excluir Etlans',d);
+  document.getElementById('etlans').appendChild(d);
+}
 </script>
 </body>
 </html>
