@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ficha ETLANS</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --accent:#7b82ff;
@@ -15,208 +17,291 @@
   --muted:#9aa0c3;
   --border:#2a2f4a;
 }
+
 [data-theme="red"]{--accent:#ff5c5c}
 [data-theme="gold"]{--accent:#e6c15a}
 [data-theme="emerald"]{--accent:#4cd3a3}
 [data-theme="rose"]{--accent:#c97bff}
-[data-theme="white"]{--accent:#eaeaea;--ink:#111;--bg:#f2f2f2;--panel:#fff;--panel2:#f5f5f5;--border:#ccc}
+[data-theme="white"]{
+  --accent:#666;
+  --ink:#111;
+  --bg:#f2f2f2;
+  --panel:#fff;
+  --panel2:#f5f5f5;
+  --border:#ccc;
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top,#151a2e,var(--bg) 70%);color:var(--ink);font-family:Inter,sans-serif}
-.sheet{max-width:1400px;margin:24px auto;padding:28px;background:linear-gradient(180deg,var(--panel),var(--bg));border:1px solid var(--border);border-radius:16px;box-shadow:0 0 40px #000}
-.title{font-family:Cinzel,serif;text-align:center;font-size:46px;letter-spacing:3px;margin-bottom:28px}
-.section{margin-bottom:30px}
-.section-title{font-family:Cinzel,serif;font-size:15px;letter-spacing:1px;color:#fff;background:linear-gradient(90deg,var(--accent),transparent);padding:8px 16px;border-radius:10px;margin-bottom:14px}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at top,#151a2e,var(--bg) 70%);
+  color:var(--ink);
+  font-family:Inter,sans-serif
+}
+
+.sheet{
+  max-width:1400px;
+  margin:24px auto;
+  padding:28px;
+  background:linear-gradient(180deg,var(--panel),var(--bg));
+  border:1px solid var(--border);
+  border-radius:16px
+}
+
+.title{
+  font-family:Cinzel,serif;
+  text-align:center;
+  font-size:42px;
+  margin-bottom:24px
+}
+
+.section{margin-bottom:28px}
+
+.section-title{
+  font-family:Cinzel,serif;
+  font-size:15px;
+  letter-spacing:1px;
+  color:var(--ink);
+  background:linear-gradient(90deg,var(--accent),transparent);
+  padding:8px 16px;
+  border-radius:10px;
+  margin-bottom:14px
+}
+
 .row{display:flex;gap:20px;flex-wrap:wrap}
-.field{display:flex;flex-direction:column;gap:4px;min-width:240px;flex:1}
-.field label{font-size:12px;color:var(--muted)}
-.field input,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink);padding:6px 4px;font-family:Inter}
-.field textarea{resize:none;min-height:90px}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:240px;
+  flex:1
+}
+
+label{font-size:12px;color:var(--muted)}
+
+input,textarea{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--border);
+  color:var(--ink);
+  padding:6px;
+  font-size:14px
+}
+
+textarea{resize:vertical;min-height:90px}
+
 .small{width:80px}
-.attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.attr-block{background:var(--panel);padding:16px;border-radius:14px;border:1px solid var(--border)}
-.attr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+
+input[type=number]{font-size:16px}
+
+.attrs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px
+}
+
+.attr-block{
+  background:var(--panel);
+  padding:16px;
+  border-radius:14px;
+  border:1px solid var(--border)
+}
+
+.attr{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px
+}
+
 .attr span{font-size:13px}
-.pericias-wrap{display:grid;grid-template-columns:340px 1fr;gap:30px}
-.pericias{background:var(--panel);border-radius:14px;padding:16px;border:1px solid var(--border)}
-.pericia{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;cursor:pointer}
-.pericia span{font-size:13px}
-.pericia input{width:80px;text-align:right;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.combate{background:var(--panel);border-radius:14px;padding:16px;border:1px solid var(--border)}
-.combate table{width:100%;border-collapse:collapse}
-.combate th,.combate td{border-bottom:1px solid var(--border);padding:10px}
-.combate th{font-size:12px;color:var(--muted)}
-.combate input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.status{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
-.status-box{background:var(--panel2);border:1px solid var(--border);border-radius:14px;width:130px;padding:14px;text-align:center}
-.status-box label{font-size:11px;color:var(--muted)}
-.status-box input{margin-top:8px;width:90px;font-size:20px;text-align:center;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.effects{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
-.effects label{font-size:12px;white-space:nowrap}
-.list{display:flex;flex-direction:column;gap:12px}
-.list-item{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;display:flex;gap:12px;flex-wrap:wrap}
-.list-item input,.list-item textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
-.large-notes textarea{min-height:280px;width:100%;background:transparent;border:1px solid var(--border);color:var(--ink)}
-button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;color:#fff;padding:10px 18px;border-radius:14px;font-size:12px;cursor:pointer}
-.floating{position:fixed;bottom:20px;right:20px;display:flex;gap:14px;z-index:10}
-.theme-panel{position:fixed;bottom:80px;right:20px;display:none;gap:12px}
-.theme-circle{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid #000}
-.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
-.modal-content{background:var(--panel);padding:22px;border-radius:16px;width:380px;border:1px solid var(--border)}
-.modal-content textarea{width:100%;min-height:120px;background:transparent;border:1px solid var(--border);color:var(--ink)}
+
+.pericias{
+  background:var(--panel);
+  border-radius:14px;
+  padding:16px;
+  border:1px solid var(--border)
+}
+
+.pericia{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px
+}
+
+.pericia input{width:90px;text-align:right}
+
+.combate{
+  background:var(--panel);
+  border-radius:14px;
+  padding:16px;
+  border:1px solid var(--border)
+}
+
+table{width:100%;border-collapse:collapse}
+
+th,td{
+  border-bottom:1px solid var(--border);
+  padding:8px;
+  font-size:13px
+}
+
+.status{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap
+}
+
+.status-box{
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  width:130px;
+  padding:12px;
+  text-align:center
+}
+
+.status-box input{
+  margin-top:6px;
+  width:90px;
+  font-size:20px;
+  text-align:center
+}
+
+.effects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:6px
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:12px
+}
+
+.list-item{
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center
+}
+
+.remove{
+  background:#ff5c5c;
+  border:none;
+  color:#fff;
+  padding:4px 8px;
+  border-radius:6px;
+  cursor:pointer
+}
+
+button{
+  background:linear-gradient(135deg,var(--accent),#4b54ff);
+  border:none;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:12px
+}
+
+.floating{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  gap:12px
+}
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:12px 18px;
+  border-radius:12px;
+  display:none
+}
+
+@media(max-width:768px){
+  .sheet{padding:18px}
+  .title{font-size:32px}
+}
 </style>
 </head>
+
 <body>
-<div class="sheet" id="sheet">
+
+<div class="sheet">
 <div class="title">ETLANS</div>
 
 <div class="section">
 <div class="row">
-<div class="field"><label>Nome do Personagem</label><input></div>
-<div class="field"><label>Nome do Jogador</label><input></div>
-<div class="field"><label>Histórico</label><input></div>
+<div class="field"><label>Personagem</label><input></div>
+<div class="field"><label>Jogador</label><input></div>
 <div class="field"><label>Arquétipo</label><input></div>
+<div class="field"><label>Histórico</label><input></div>
 </div>
 </div>
 
 <div class="attrs">
-<div class="attr-block"><div class="section-title">Atributos Físicos</div>
-<div class="attr"><span>Força (FOR)</span><input class="small" type="number"></div>
-<div class="attr"><span>Destreza (DES)</span><input class="small" type="number"></div>
-<div class="attr"><span>Vigor (VIG)</span><input class="small" type="number"></div></div>
-<div class="attr-block"><div class="section-title">Atributos Sociais</div>
-<div class="attr"><span>Aparência (APA)</span><input class="small" type="number"></div>
-<div class="attr"><span>Carisma (CAR)</span><input class="small" type="number"></div>
-<div class="attr"><span>Manipulação (MAN)</span><input class="small" type="number"></div></div>
-<div class="attr-block"><div class="section-title">Atributos Mentais</div>
-<div class="attr"><span>Percepção (PER)</span><input class="small" type="number"></div>
-<div class="attr"><span>Inteligência (INT)</span><input class="small" type="number"></div>
-<div class="attr"><span>Raciocínio (RAC)</span><input class="small" type="number"></div></div>
-</div>
-
-<div class="pericias-wrap">
-<div class="pericias">
-<div class="section-title">Perícias</div>
-<div id="pericias">
-<div class="pericia"><span>Acadêmicos</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Arma à Distância</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Arma Branca</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Atletismo</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Ciências</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Direito</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Empatia</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Empatia c/ Animais</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Esquiva</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Etiqueta</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Expressão</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Finanças</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Furtividade</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Intimidação</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Investigação</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Lábia</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Liderança</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Linguística</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Luta</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Manha</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Medicina</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Ocultismo</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Ofício</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Performance</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Política</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Prontidão</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Resistência</span><input type="number" step="0.01"></div>
-<div class="pericia"><span>Sobrevivência</span><input type="number" step="0.01"></div>
-</div>
-<button onclick="addPericia()">Adicionar Perícia</button>
-</div>
-
-<div class="combate">
-<div class="section-title">Combate</div>
-<table id="armas"><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Distância</th><th>Tipo</th><th>Peso</th></tr></table>
-<button onclick="addArma()">Adicionar Arma</button>
-<div class="section-title" style="margin-top:18px">Status</div>
-<div class="status">
-<div class="status-box"><label>Vida</label><input type="number"></div>
-<div class="status-box"><label>Movimento</label><input type="number"></div>
-<div class="status-box"><label>Armadura</label><input type="number"></div>
-<div class="status-box"><label>Foco</label><input type="number"></div>
-<div class="status-box"><label>Energia</label><input type="number"></div>
-</div>
-<div class="section-title" style="margin-top:18px">Efeitos</div>
-<div class="effects">
-<label><input type="checkbox"> Agarrado</label><label><input type="checkbox"> Amedrontado</label><label><input type="checkbox"> Atordoado</label>
-<label><input type="checkbox"> Caído</label><label><input type="checkbox"> Cego</label><label><input type="checkbox"> Envenenado</label>
-<label><input type="checkbox"> Impedido</label><label><input type="checkbox"> Inconsciente</label><label><input type="checkbox"> Paralisado</label>
-<label><input type="checkbox"> Surdo</label><label><input type="checkbox"> Fraturado</label><label><input type="checkbox"> Sangrando</label>
-<label><input type="checkbox"> Em Chamas</label><label><input type="checkbox"> Enfeitiçado</label><label><input type="checkbox"> Desconsciência</label>
-</div>
+<div class="attr-block">
+<div class="section-title">Atributos</div>
+<div class="attr"><span>Força</span><input type="number" min="0" max="10"></div>
+<div class="attr"><span>Destreza</span><input type="number" min="0" max="10"></div>
+<div class="attr"><span>Vigor</span><input type="number" min="0" max="10"></div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-title">Inventário</div>
-<div id="inventario" class="list"></div>
+<div id="inventario" class="list">
+<div class="muted">Nenhum item adicionado</div>
+</div>
 <button onclick="addItem()">Adicionar Item</button>
 </div>
 
-<div class="section">
-<div class="section-title">Habilidades / ETLANS</div>
-<div id="etlans" class="list"></div>
-<button onclick="addEtlans()">Adicionar Habilidade / Etlans</button>
-</div>
-
-<div class="section">
-<div class="section-title">Arquétipo</div>
-<div class="field"><label>Nome</label><input></div>
-<div class="field"><label>Descrição</label><textarea></textarea></div>
-</div>
-
-<div class="section">
-<div class="section-title">Histórico</div>
-<div class="field"><label>Nome</label><input></div>
-<div class="field"><label>Descrição</label><textarea></textarea></div>
-</div>
-
-<div class="section large-notes">
-<div class="section-title">Anotações</div>
-<textarea></textarea>
-</div>
 </div>
 
 <div class="floating">
-<button onclick="toggleThemes()">TEMAS</button>
 <button onclick="saveSheet()">SALVAR</button>
 </div>
-<div class="theme-panel" id="themes">
-<div class="theme-circle" style="background:#ff5c5c" onclick="setTheme('red')"></div>
-<div class="theme-circle" style="background:#e6c15a" onclick="setTheme('gold')"></div>
-<div class="theme-circle" style="background:#4cd3a3" onclick="setTheme('emerald')"></div>
-<div class="theme-circle" style="background:#c97bff" onclick="setTheme('rose')"></div>
-<div class="theme-circle" style="background:#eaeaea" onclick="setTheme('white')"></div>
-</div>
 
-<div class="modal" id="modal">
-<div class="modal-content">
-<h3 id="modalTitle"></h3>
-<textarea id="modalDesc"></textarea>
-<button onclick="confirmDelete()">EXCLUIR</button>
-<button onclick="closeModal()">Fechar</button>
-</div>
-</div>
+<div class="toast" id="toast">Ficha salva com sucesso</div>
 
 <script>
-let targetDelete=null;
-function toggleThemes(){const t=document.getElementById('themes');t.style.display=t.style.display==='flex'?'none':'flex'}
-function setTheme(name){document.documentElement.setAttribute('data-theme',name);localStorage.setItem('theme',name)}
-function saveSheet(){const data={};document.querySelectorAll('input,textarea').forEach((el,i)=>data[i]=el.value);localStorage.setItem('etlansSheet',JSON.stringify(data));alert('Ficha salva localmente')}
-function loadSheet(){const data=JSON.parse(localStorage.getItem('etlansSheet')||'{}');document.querySelectorAll('input,textarea').forEach((el,i)=>{if(data[i]!==undefined)el.value=data[i]});const t=localStorage.getItem('theme');if(t)setTheme(t)}
-loadSheet();
-function openModal(title,el){targetDelete=el;document.getElementById('modalTitle').innerText=title;document.getElementById('modal').style.display='flex'}
-function closeModal(){document.getElementById('modal').style.display='none';targetDelete=null}
-function confirmDelete(){if(targetDelete)targetDelete.remove();closeModal()}
-function addPericia(){const d=document.createElement('div');d.className='pericia';d.innerHTML='<span contenteditable>Nova Perícia</span><input type="number" step="0.01">';d.ondblclick=()=>openModal('Excluir Perícia',d);document.getElementById('pericias').appendChild(d)}
-function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';};r.ondblclick=()=>openModal('Excluir Arma',r)}
-function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small"> <textarea placeholder="Descrição"></textarea>';d.ondblclick=()=>openModal('Excluir Item',d);document.getElementById('inventario').appendChild(d)}
-function addEtlans(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <input placeholder="Qtd" class="small"> <input placeholder="Custo" class="small">';d.ondblclick=()=>openModal('Excluir Habilidade / Etlans',d);document.getElementById('etlans').appendChild(d)}
+function addItem(){
+  const inv=document.getElementById('inventario');
+  if(inv.querySelector('.muted')) inv.innerHTML='';
+  const d=document.createElement('div');
+  d.className='list-item';
+  d.innerHTML=`
+    <input placeholder="Item">
+    <input type="number" min="0" max="999" placeholder="Peso (kg)" class="small">
+    <button class="remove" onclick="this.parentElement.remove()">X</button>`;
+  inv.appendChild(d);
+}
+
+function saveSheet(){
+  const data={};
+  document.querySelectorAll('input,textarea').forEach((el,i)=>data[i]=el.value);
+  localStorage.setItem('etlansSheet',JSON.stringify(data));
+  const t=document.getElementById('toast');
+  t.style.display='block';
+  setTimeout(()=>t.style.display='none',2000);
+}
 </script>
+
 </body>
 </html>
