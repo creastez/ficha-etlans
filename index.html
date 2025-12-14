@@ -4,205 +4,170 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ficha ETLANS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#0e0e12;--paper:#f7f7f9;--ink:#111;--blk:#111;
- --accent:#2b2b2b;--muted:#666;
+ --bg:#0d0f14;--panel:#141826;--panel2:#1b2033;--ink:#eaeaf0;--muted:#9aa0c3;--accent:#6e78ff;--danger:#ff5c5c;--border:#2a2f4a;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:"Times New Roman",serif}
-.sheet{max-width:1200px;margin:24px auto;background:var(--paper);padding:28px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
-.title{font-size:44px;text-align:center;margin-bottom:22px;letter-spacing:2px}
-
+body{margin:0;background:radial-gradient(circle at top,#151a2e,#0d0f14 70%);color:var(--ink);font-family:Inter,sans-serif}
+.sheet{max-width:1200px;margin:24px auto;padding:24px;background:linear-gradient(180deg,#141826,#0f1220);border:1px solid var(--border);border-radius:14px;box-shadow:0 0 40px #000}
+.title{font-family:Cinzel,serif;text-align:center;font-size:42px;letter-spacing:2px;margin-bottom:20px}
 .section{margin-bottom:22px}
-.section-title{background:var(--blk);color:#fff;padding:6px 14px;font-weight:bold;display:inline-block;margin-bottom:10px;letter-spacing:1px}
+.section-title{font-family:Cinzel,serif;font-size:15px;letter-spacing:1px;color:#fff;background:linear-gradient(90deg,var(--accent),transparent);padding:6px 12px;border-radius:6px;margin-bottom:10px}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:4px;min-width:180px}
+.field label{font-size:12px;color:var(--muted)}
+.field input,.field textarea{background:var(--panel2);border:1px solid var(--border);color:var(--ink);padding:6px 8px;border-radius:6px;font-family:Inter}
+.field textarea{resize:none;min-height:70px}
+.small{width:70px}
 
-.row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px}
-.field{display:flex;align-items:center;gap:8px}
-.field label{font-size:15px;white-space:nowrap}
-.field input{border:1.5px solid #000;height:26px;padding:2px 6px;font-size:14px}
+.attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.attr-block{background:var(--panel);padding:12px;border-radius:10px;border:1px solid var(--border)}
+.attr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.attr span{font-size:13px}
 
-.long{width:460px}
-.medium{width:280px}
-.small{width:70px;text-align:center}
+.pericias-wrap{display:grid;grid-template-columns:300px 1fr;gap:20px}
+.pericias{background:var(--panel);border-radius:10px;padding:12px;border:1px solid var(--border)}
+.pericia{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;cursor:pointer}
+.pericia span{font-size:13px}
+.pericia input{width:60px}
 
-/* ATRIBUTOS */
-.attrs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
-.attr-block label{display:flex;justify-content:space-between;align-items:center;font-size:15px;margin-bottom:8px}
+.combate{background:var(--panel);border-radius:10px;padding:12px;border:1px solid var(--border)}
+.combate table{width:100%;border-collapse:collapse}
+.combate th,.combate td{border-bottom:1px solid var(--border);padding:6px}
+.combate th{font-size:12px;color:var(--muted)}
 
-/* PERÍCIAS */
-.pericias-wrap{display:grid;grid-template-columns:300px 1fr;gap:28px;margin-top:20px}
-.pericias{background:#111;color:#fff;padding:14px}
-.pericia{display:flex;justify-content:space-between;align-items:center;font-size:15px;margin-bottom:8px}
-.pericia input{width:60px;text-align:center}
+button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer}
+button.danger{background:linear-gradient(135deg,var(--danger),#c33)}
 
-/* COMBATE */
-.combate table{width:100%;border-collapse:collapse;margin-bottom:10px}
-.combate th,.combate td{border:1.5px solid #000;padding:6px}
-.combate input{width:100%;border:none;background:transparent}
+.status{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.status-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;width:110px;padding:10px;text-align:center}
+.status-box label{font-size:11px;color:var(--muted)}
+.status-box input{margin-top:6px;width:70px;font-size:18px;text-align:center}
 
-/* STATUS */
-.status{display:flex;gap:18px;margin:18px 0}
-.status-box{border:2px solid #000;width:110px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.status-box strong{margin-bottom:6px}
-.status-box input{width:70px;height:44px;font-size:22px;text-align:center}
+.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.effects label{font-size:12px}
 
-/* PROFICIÊNCIAS */
-.prof-box{border:2px solid #000;padding:10px}
-.prof-box textarea{width:100%;height:70px;border:1px solid #000;resize:none}
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
+.modal-content{background:var(--panel);padding:20px;border-radius:12px;width:320px;border:1px solid var(--border)}
+.modal-content textarea{width:100%;min-height:80px}
 
-/* TABELAS GERAIS */
-table{font-size:14px}
-th{background:#eee}
+.list{display:flex;flex-direction:column;gap:8px}
+.list-item{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:8px;cursor:pointer}
 
-/* EFEITOS */
-.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.effects label{font-size:14px}
-
-/* ETLANS */
-button{margin-top:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+.large-notes textarea{min-height:160px}
 </style>
 </head>
 <body>
 <div class="sheet">
-
-<div class="title">Etlans</div>
+<div class="title">ETLANS</div>
 
 <div class="section">
-  <div class="row">
-    <div class="field"><label>Nome do Personagem:</label><input class="long" data-field="nome"></div>
-    <div class="field"><label>Nome do Jogador:</label><input class="long" data-field="jogador"></div>
-  </div>
-  <div class="row">
-    <div class="field"><label>Histórico:</label><input class="medium" data-field="historico"></div>
-    <div class="field"><label>Arquétipo:</label><input class="medium" data-field="arquetipo"></div>
-  </div>
+<div class="row">
+<div class="field"><label>Nome do Personagem</label><input></div>
+<div class="field"><label>Nome do Jogador</label><input></div>
+<div class="field"><label>Histórico</label><input></div>
+<div class="field"><label>Arquétipo</label><input></div>
+</div>
 </div>
 
 <div class="attrs">
-  <div class="attr-block">
-    <div class="section-title">ATRIBUTOS FÍSICOS</div>
-    <label>Força (FOR) <input class="small" type="number" step="0.01"></label>
-    <label>Destreza (DES) <input class="small" type="number" step="0.01"></label>
-    <label>Vigor (VIG) <input class="small" type="number" step="0.01"></label>
-  </div>
-  <div class="attr-block">
-    <div class="section-title">ATRIBUTOS SOCIAIS</div>
-    <label>Aparência (APA) <input class="small" type="number" step="0.01"></label>
-    <label>Carisma (CAR) <input class="small" type="number" step="0.01"></label>
-    <label>Manipulação (MAN) <input class="small" type="number" step="0.01"></label>
-  </div>
-  <div class="attr-block">
-    <div class="section-title">ATRIBUTOS MENTAIS</div>
-    <label>Percepção (PER) <input class="small" type="number" step="0.01"></label>
-    <label>Inteligência (INT) <input class="small" type="number" step="0.01"></label>
-    <label>Raciocínio (RAC) <input class="small" type="number" step="0.01"></label>
-  </div>
+<div class="attr-block"><div class="section-title">Atributos Físicos</div>
+<div class="attr"><span>Força</span><input class="small" type="number"></div>
+<div class="attr"><span>Destreza</span><input class="small" type="number"></div>
+<div class="attr"><span>Vigor</span><input class="small" type="number"></div></div>
+<div class="attr-block"><div class="section-title">Atributos Sociais</div>
+<div class="attr"><span>Aparência</span><input class="small" type="number"></div>
+<div class="attr"><span>Carisma</span><input class="small" type="number"></div>
+<div class="attr"><span>Manipulação</span><input class="small" type="number"></div></div>
+<div class="attr-block"><div class="section-title">Atributos Mentais</div>
+<div class="attr"><span>Percepção</span><input class="small" type="number"></div>
+<div class="attr"><span>Inteligência</span><input class="small" type="number"></div>
+<div class="attr"><span>Raciocínio</span><input class="small" type="number"></div></div>
 </div>
 
 <div class="pericias-wrap">
-  <div class="pericias">
-    <div class="section-title">PERÍCIAS</div>
-    <div class="pericia">Acadêmicos <input type="number" step="0.01"></div>
-    <div class="pericia">Arma à Distância <input type="number" step="0.01"></div>
-    <div class="pericia">Arma Branca <input type="number" step="0.01"></div>
-    <div class="pericia">Atletismo <input type="number" step="0.01"></div>
-    <div class="pericia">Ciências <input type="number" step="0.01"></div>
-    <div class="pericia">Direito <input type="number" step="0.01"></div>
-    <div class="pericia">Empatia <input type="number" step="0.01"></div>
-    <div class="pericia">Empatia c/ Animais <input type="number" step="0.01"></div>
-    <div class="pericia">Esquiva <input type="number" step="0.01"></div>
-    <div class="pericia">Etiqueta <input type="number" step="0.01"></div>
-    <div class="pericia">Expressão <input type="number" step="0.01"></div>
-    <div class="pericia">Finanças <input type="number" step="0.01"></div>
-    <div class="pericia">Furtividade <input type="number" step="0.01"></div>
-    <div class="pericia">Intimidação <input type="number" step="0.01"></div>
-    <div class="pericia">Investigação <input type="number" step="0.01"></div>
-    <div class="pericia">Lábia <input type="number" step="0.01"></div>
-    <div class="pericia">Liderança <input type="number" step="0.01"></div>
-    <div class="pericia">Linguística <input type="number" step="0.01"></div>
-    <div class="pericia">Luta <input type="number" step="0.01"></div>
-    <div class="pericia">Manha <input type="number" step="0.01"></div>
-    <div class="pericia">Medicina <input type="number" step="0.01"></div>
-    <div class="pericia">Ocultismo <input type="number" step="0.01"></div>
-    <div class="pericia">Ofício <input type="number" step="0.01"></div>
-    <div class="pericia">Performance <input type="number" step="0.01"></div>
-    <div class="pericia">Política <input type="number" step="0.01"></div>
-    <div class="pericia">Prontidão <input type="number" step="0.01"></div>
-    <div class="pericia">Resistência <input type="number" step="0.01"></div>
-    <div class="pericia">Sobrevivência <input type="number" step="0.01"></div>
-  </div>
+<div class="pericias">
+<div class="section-title">Perícias</div>
+<div id="pericias" class="list"></div>
+<button onclick="addPericia()">Adicionar Perícia</button>
+</div>
 
-  <div>
-    <div class="section-title">COMBATE</div>
-    <div class="combate">
-      <table>
-        <thead>
-          <tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Distância</th><th>Tipo</th><th>Peso</th></tr>
-        </thead>
-        <tbody id="armas">
-          <tr>
-            <td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td>
-          </tr>
-        </tbody>
-      </table>
-      <button onclick="addArma()">Adicionar Arma</button>
-    </div>
+<div class="combate">
+<div class="section-title">Combate</div>
+<table id="armas"><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Distância</th><th>Tipo</th><th>Peso</th></tr></table>
+<button onclick="addArma()">Adicionar Arma</button>
 
-    <div class="status">
-      <div class="status-box"><strong>VIDA</strong><input type="number"></div>
-      <div class="status-box"><strong>MOVIMENTO</strong><input type="number"></div>
-      <div class="status-box"><strong>ARMADURA</strong><input type="number"></div>
-      <div class="status-box"><strong>FOCO</strong><input type="number"></div>
-      <div class="status-box"><strong>ENERGIA</strong><input type="number"></div>
-    </div>
+<div class="section-title" style="margin-top:14px">Status</div>
+<div class="status">
+<div class="status-box"><label>Vida</label><input type="number"></div>
+<div class="status-box"><label>Movimento</label><input type="number"></div>
+<div class="status-box"><label>Armadura</label><input type="number"></div>
+<div class="status-box"><label>Foco</label><input type="number"></div>
+<div class="status-box"><label>Energia</label><input type="number"></div>
+</div>
 
-    <div class="section-title">EFEITOS NEGATIVOS</div>
-    <div class="effects">
-      <label><input type="checkbox"> Agarrado</label>
-      <label><input type="checkbox"> Amedrontado</label>
-      <label><input type="checkbox"> Atordoado</label>
-      <label><input type="checkbox"> Caído</label>
-      <label><input type="checkbox"> Cego</label>
-      <label><input type="checkbox"> Envenenado</label>
-      <label><input type="checkbox"> Impedido</label>
-      <label><input type="checkbox"> Inconsciente</label>
-      <label><input type="checkbox"> Paralisado</label>
-      <label><input type="checkbox"> Surdo</label>
-      <label><input type="checkbox"> Fraturado</label>
-      <label><input type="checkbox"> Sangrando</label>
-      <label><input type="checkbox"> Em Chamas</label>
-      <label><input type="checkbox"> Enfeitiçado</label>
-      <label><input type="checkbox"> Desconsciência</label>
-    </div>
-
-    <div class="section-title" style="margin-top:18px">PROFICIÊNCIAS</div>
-    <div class="prof-box"><textarea></textarea></div>
-  </div>
+<div class="section-title" style="margin-top:14px">Efeitos</div>
+<div class="effects">
+<label><input type="checkbox"> Agarrado</label><label><input type="checkbox"> Amedrontado</label><label><input type="checkbox"> Atordoado</label>
+<label><input type="checkbox"> Caído</label><label><input type="checkbox"> Cego</label><label><input type="checkbox"> Envenenado</label>
+<label><input type="checkbox"> Impedido</label><label><input type="checkbox"> Inconsciente</label><label><input type="checkbox"> Paralisado</label>
+<label><input type="checkbox"> Surdo</label><label><input type="checkbox"> Fraturado</label><label><input type="checkbox"> Sangrando</label>
+<label><input type="checkbox"> Em Chamas</label><label><input type="checkbox"> Enfeitiçado</label><label><input type="checkbox"> Desconsciência</label>
+</div>
+</div>
 </div>
 
 <div class="section">
-  <div class="section-title">HABILIDADES / ETLANS</div>
-  <table id="etlansTable" style="width:100%;border-collapse:collapse">
-    <tr><th>Nome</th><th>Quantidade</th><th>Custo</th></tr>
-    <tr><td><input></td><td><input type="number"></td><td><input></td></tr>
-  </table>
-  <button onclick="addEtlans()">Adicionar Habilidade / Etlans</button>
+<div class="section-title">Inventário</div>
+<div id="inventario" class="list"></div>
+<button onclick="addItem()">Adicionar Item</button>
 </div>
 
+<div class="section">
+<div class="section-title">Habilidades / ETLANS</div>
+<div id="etlans" class="list"></div>
+<button onclick="addEtlans()">Adicionar Habilidade / Etlans</button>
+</div>
+
+<div class="section">
+<div class="section-title">Arquétipo</div>
+<div class="field"><label>Nome</label><input></div>
+<div class="field"><label>Descrição</label><textarea></textarea></div>
+</div>
+
+<div class="section">
+<div class="section-title">Histórico</div>
+<div class="field"><label>Nome</label><input></div>
+<div class="field"><label>Descrição</label><textarea></textarea></div>
+</div>
+
+<div class="section large-notes">
+<div class="section-title">Anotações</div>
+<textarea></textarea>
+</div>
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3 id="modalTitle"></h3>
+<textarea id="modalDesc"></textarea>
+<button class="danger" onclick="confirmDelete()">EXCLUIR</button>
+<button onclick="closeModal()">Fechar</button>
+</div>
 </div>
 
 <script>
-function addArma(){
- const tr=document.createElement('tr');
- tr.innerHTML='<td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td>';
- document.getElementById('armas').appendChild(tr);
-}
-function addEtlans(){
- const t=document.getElementById('etlansTable');
- const r=t.insertRow(-1);
- r.innerHTML='<td><input></td><td><input type="number"></td><td><input></td>';
-}
+let targetDelete=null;
+function openModal(title,el){targetDelete=el;document.getElementById('modalTitle').innerText=title;document.getElementById('modal').style.display='flex'}
+function closeModal(){document.getElementById('modal').style.display='none';targetDelete=null}
+function confirmDelete(){if(targetDelete)targetDelete.remove();closeModal()}
+
+function addPericia(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<strong>Nova Perícia</strong><input type="number" step="0.01">';d.ondblclick=()=>openModal('Excluir Perícia',d);document.getElementById('pericias').appendChild(d)}
+function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';}r.ondblclick=()=>openModal('Excluir Arma',r)}
+function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small">';d.ondblclick=()=>openModal('Excluir Item',d);document.getElementById('inventario').appendChild(d)}
+function addEtlans(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <input placeholder="Qtd" class="small"> <input placeholder="Custo" class="small">';d.ondblclick=()=>openModal('Excluir Habilidade / Etlans',d);document.getElementById('etlans').appendChild(d)}
 </script>
 </body>
 </html>
