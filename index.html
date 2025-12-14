@@ -6,12 +6,13 @@
   <title>Ficha ETLANS</title>
   <style>
     :root {
-      --bg: #0e0e11;
-      --card: #18181f;
+      --bg: #0b0b0e;
+      --card: #15151c;
       --border: #2a2a35;
       --text: #eaeaf0;
-      --muted: #a0a0b0;
+      --muted: #9fa0b5;
       --accent: #6f7cff;
+      --danger: #ff6b6b;
     }
 
     * { box-sizing: border-box; }
@@ -23,26 +24,31 @@
       color: var(--text);
     }
 
-    h2, h3 {
-      margin-top: 0;
+    h2 {
+      margin: 0 0 8px 0;
       border-bottom: 1px solid var(--border);
       padding-bottom: 4px;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: auto;
       padding: 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 16px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 12px;
+    }
+
+    .card.combate {
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 12px rgba(111,124,255,0.2);
     }
 
     label {
@@ -51,44 +57,44 @@
     }
 
     input, textarea {
-      width: 100%;
       background: #0f0f15;
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 6px;
+      padding: 4px 6px;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    textarea { resize: vertical; min-height: 80px; }
+    input[type=number] {
+      width: 56px;
+      text-align: center;
+    }
+
+    textarea { resize: vertical; min-height: 70px; width: 100%; }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, auto);
       gap: 8px;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, auto);
       gap: 8px;
     }
-
-    .small { width: 60px; }
 
     button {
       background: var(--accent);
       border: none;
       border-radius: 8px;
-      padding: 10px 14px;
+      padding: 8px 12px;
       font-weight: bold;
       color: #fff;
       cursor: pointer;
     }
 
-    button.secondary {
-      background: #2a2a35;
-    }
+    button.secondary { background: #2a2a35; }
 
     .actions {
       position: fixed;
@@ -96,11 +102,13 @@
       right: 16px;
       display: flex;
       gap: 8px;
+      z-index: 10;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      font-size: 13px;
     }
 
     th, td {
@@ -109,7 +117,20 @@
       text-align: left;
     }
 
-    th { color: var(--muted); font-size: 12px; }
+    th { color: var(--muted); font-size: 11px; }
+
+    .pericias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 6px;
+    }
+
+    .pericia {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
 
     @media (max-width: 600px) {
       .actions { flex-direction: column; }
@@ -118,7 +139,7 @@
 </head>
 <body>
 
-<div class="container" id="sheet">
+<div class="container">
 
   <div class="card">
     <h2>Identidade</h2>
@@ -129,59 +150,43 @@
   </div>
 
   <div class="card">
-    <h2>Atributos Físicos</h2>
+    <h2>Atributos</h2>
     <div class="grid-3">
-      <div><label>FOR</label><input data-field="for" type="number" /></div>
-      <div><label>DES</label><input data-field="des" type="number" /></div>
-      <div><label>VIG</label><input data-field="vig" type="number" /></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Atributos Sociais</h2>
-    <div class="grid-3">
-      <div><label>APA</label><input data-field="apa" type="number" /></div>
-      <div><label>CAR</label><input data-field="car" type="number" /></div>
-      <div><label>MAN</label><input data-field="man" type="number" /></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Atributos Mentais</h2>
-    <div class="grid-3">
-      <div><label>PER</label><input data-field="per" type="number" /></div>
-      <div><label>INT</label><input data-field="int" type="number" /></div>
-      <div><label>RAC</label><input data-field="rac" type="number" /></div>
+      <div><label>FOR</label><input data-field="for" type="number" step="0.01" /></div>
+      <div><label>DES</label><input data-field="des" type="number" step="0.01" /></div>
+      <div><label>VIG</label><input data-field="vig" type="number" step="0.01" /></div>
+      <div><label>APA</label><input data-field="apa" type="number" step="0.01" /></div>
+      <div><label>CAR</label><input data-field="car" type="number" step="0.01" /></div>
+      <div><label>MAN</label><input data-field="man" type="number" step="0.01" /></div>
+      <div><label>PER</label><input data-field="per" type="number" step="0.01" /></div>
+      <div><label>INT</label><input data-field="int" type="number" step="0.01" /></div>
+      <div><label>RAC</label><input data-field="rac" type="number" step="0.01" /></div>
     </div>
   </div>
 
   <div class="card">
     <h2>Perícias</h2>
-    <textarea data-field="pericias" placeholder="Acadêmicos, Atletismo, Luta... (valor entre parênteses)"></textarea>
+    <div class="pericias" id="pericias"></div>
+    <button class="secondary" onclick="addCustomSkill()">Adicionar Perícia</button>
   </div>
 
-  <div class="card">
-    <h2>Combate</h2>
+  <div class="card combate">
+    <h2>⚔ Combate</h2>
     <table>
       <thead><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Dist.</th><th>Tipo</th><th>Peso</th></tr></thead>
       <tbody id="armas"></tbody>
     </table>
-    <button class="secondary" onclick="addRow('armas')">Adicionar Arma</button>
+    <button class="secondary" onclick="addRow('armas',6)">Adicionar Arma</button>
   </div>
 
   <div class="card">
     <h2>Status</h2>
     <div class="grid-2">
-      <div><label>Vida</label><input data-field="vida" type="number" /></div>
-      <div><label>Foco / Energia</label><input data-field="foco" /></div>
-      <div><label>Movimento</label><input data-field="movimento" /></div>
-      <div><label>Armadura</label><input data-field="armadura" /></div>
+      <div><label>Vida</label><input data-field="vida" type="number" step="0.01" /></div>
+      <div><label>Foco / Energia</label><input data-field="foco" type="number" step="0.01" /></div>
+      <div><label>Movimento</label><input data-field="movimento" type="number" step="0.01" /></div>
+      <div><label>Armadura</label><input data-field="armadura" type="number" step="0.01" /></div>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>Habilidades ETLANS</h2>
-    <textarea data-field="etlans"></textarea>
   </div>
 
   <div class="card">
@@ -190,12 +195,12 @@
       <thead><tr><th>Nome</th><th>Qtd</th><th>Custo</th></tr></thead>
       <tbody id="inventario"></tbody>
     </table>
-    <button class="secondary" onclick="addRow('inventario')">Adicionar Item</button>
+    <button class="secondary" onclick="addRow('inventario',3)">Adicionar Item</button>
   </div>
 
   <div class="card">
-    <h2>Efeitos Negativos</h2>
-    <textarea data-field="efeitos"></textarea>
+    <h2>Habilidades ETLANS</h2>
+    <textarea data-field="etlans"></textarea>
   </div>
 
   <div class="card">
@@ -213,36 +218,52 @@
 <audio id="click" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA="></audio>
 
 <script>
-  const click = () => document.getElementById('click').play();
+  const skillList = [
+    'Acadêmicos','Arma à Distância','Arma Branca','Atletismo','Ciências','Direito','Empatia','Empatia c/ Animais','Esquiva','Etiqueta','Expressão','Finanças','Furtividade','Intimidação','Investigação','Lábia','Liderança','Linguística','Luta','Manha','Medicina','Ocultismo','Ofício','Performance','Política','Prontidão','Resistência','Sobrevivência'
+  ];
 
-  document.addEventListener('click', e => {
-    if (e.target.tagName === 'BUTTON') click();
-  });
+  const periciasDiv = document.getElementById('pericias');
 
-  function addRow(id) {
+  skillList.forEach(name => createSkill(name));
+
+  function createSkill(name, value='') {
+    const div = document.createElement('div');
+    div.className = 'pericia';
+    div.innerHTML = `<label>${name}</label><input type="number" step="0.01" value="${value}">`;
+    periciasDiv.appendChild(div);
+  }
+
+  function addCustomSkill() {
+    const name = prompt('Nome da nova perícia:');
+    if (name) createSkill(name);
+  }
+
+  function addRow(id, cols) {
     const tr = document.createElement('tr');
-    tr.innerHTML = '<td><input></td>'.repeat(6);
+    tr.innerHTML = '<td><input></td>'.repeat(cols);
     document.getElementById(id).appendChild(tr);
   }
 
   function saveSheet() {
     const data = {};
-    document.querySelectorAll('[data-field]').forEach(el => {
-      data[el.dataset.field] = el.value;
-    });
+    document.querySelectorAll('[data-field]').forEach(el => data[el.dataset.field] = el.value);
+    data.pericias = Array.from(document.querySelectorAll('.pericia')).map(p => ({
+      name: p.querySelector('label').innerText,
+      value: p.querySelector('input').value
+    }));
     data.armas = document.getElementById('armas').innerHTML;
     data.inventario = document.getElementById('inventario').innerHTML;
     localStorage.setItem('etlans-sheet', JSON.stringify(data));
-    alert('Ficha salva localmente');
+    alert('Ficha salva');
   }
 
   function loadSheet() {
     const raw = localStorage.getItem('etlans-sheet');
     if (!raw) return;
     const data = JSON.parse(raw);
-    document.querySelectorAll('[data-field]').forEach(el => {
-      el.value = data[el.dataset.field] || '';
-    });
+    document.querySelectorAll('[data-field]').forEach(el => el.value = data[el.dataset.field] || '');
+    periciasDiv.innerHTML = '';
+    data.pericias?.forEach(p => createSkill(p.name, p.value));
     document.getElementById('armas').innerHTML = data.armas || '';
     document.getElementById('inventario').innerHTML = data.inventario || '';
   }
