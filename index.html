@@ -1,275 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ficha ETLANS</title>
-  <style>
-    :root {
-      --bg: #0b0b0e;
-      --card: #15151c;
-      --border: #2a2a35;
-      --text: #eaeaf0;
-      --muted: #9fa0b5;
-      --accent: #6f7cff;
-      --danger: #ff6b6b;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    h2 {
-      margin: 0 0 8px 0;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 4px;
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: auto;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    .card.combate {
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 12px rgba(111,124,255,0.2);
-    }
-
-    label {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    input, textarea {
-      background: #0f0f15;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 6px;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    input[type=number] {
-      width: 56px;
-      text-align: center;
-    }
-
-    textarea { resize: vertical; min-height: 70px; width: 100%; }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      gap: 8px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      gap: 8px;
-    }
-
-    button {
-      background: var(--accent);
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    button.secondary { background: #2a2a35; }
-
-    .actions {
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      display: flex;
-      gap: 8px;
-      z-index: 10;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    th, td {
-      border: 1px solid var(--border);
-      padding: 6px;
-      text-align: left;
-    }
-
-    th { color: var(--muted); font-size: 11px; }
-
-    .pericias {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 6px;
-    }
-
-    .pericia {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    @media (max-width: 600px) {
-      .actions { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha ETLANS</title>
+<style>
+:root{
+ --bg:#0b0b0e;--card:#15151c;--border:#2a2a35;--text:#eaeaf0;--muted:#9fa0b5;--accent:#6f7cff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui}
+h2{margin:0 0 6px 0;font-size:15px;border-bottom:1px solid var(--border)}
+.container{max-width:1400px;margin:auto;padding:14px;display:grid;grid-template-columns:1.1fr 1fr 1.2fr 1.4fr;gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px}
+.combate{border:2px solid var(--accent)}
+label{font-size:11px;color:var(--muted)}
+input,textarea{background:#0f0f15;border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 6px;font-size:13px}
+input[type=number]{width:54px;text-align:center}
+textarea{resize:vertical;min-height:70px;width:100%}
+.row{display:flex;gap:6px;align-items:center}
+.col{display:flex;flex-direction:column;gap:4px}
+.grid-attr{display:grid;grid-template-columns:repeat(3,auto);gap:6px;justify-content:start}
+.pericias{display:grid;grid-template-columns:1fr auto;gap:4px}
+.pericia{display:contents}
+button{background:var(--accent);border:none;border-radius:6px;color:#fff;font-size:12px;padding:6px 10px;cursor:pointer}
+button.secondary{background:#2a2a35}
+button.danger{background:#3a1e1e;color:#ff9a9a}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{border:1px solid var(--border);padding:4px}
+th{color:var(--muted)}
+.expand{cursor:pointer;color:var(--accent);font-size:11px}
+.actions{position:fixed;bottom:14px;right:14px;display:flex;gap:8px}
+@media(max-width:1100px){.container{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-
 <div class="container">
 
-  <div class="card">
-    <h2>Identidade</h2>
-    <label>Nome do Personagem</label><input data-field="nome" />
-    <label>Jogador</label><input data-field="jogador" />
-    <label>Arquétipo</label><input data-field="arquetipo" />
-    <label>Histórico</label><textarea data-field="historico"></textarea>
-  </div>
+<div class="card">
+<h2>Identidade</h2>
+<label>Nome do Personagem</label><input data-field="nome">
+<label>Jogador</label><input data-field="jogador">
+<label>Arquétipo</label><input data-field="arquetipo">
+<label>Histórico</label><textarea data-field="historico"></textarea>
+</div>
 
-  <div class="card">
-    <h2>Atributos</h2>
-    <div class="grid-3">
-      <div><label>FOR</label><input data-field="for" type="number" step="0.01" /></div>
-      <div><label>DES</label><input data-field="des" type="number" step="0.01" /></div>
-      <div><label>VIG</label><input data-field="vig" type="number" step="0.01" /></div>
-      <div><label>APA</label><input data-field="apa" type="number" step="0.01" /></div>
-      <div><label>CAR</label><input data-field="car" type="number" step="0.01" /></div>
-      <div><label>MAN</label><input data-field="man" type="number" step="0.01" /></div>
-      <div><label>PER</label><input data-field="per" type="number" step="0.01" /></div>
-      <div><label>INT</label><input data-field="int" type="number" step="0.01" /></div>
-      <div><label>RAC</label><input data-field="rac" type="number" step="0.01" /></div>
-    </div>
-  </div>
+<div class="card">
+<h2>Atributos</h2>
+<div class="grid-attr">
+<div class="col"><label>FOR</label><input type="number" step="0.01" data-field="for"></div>
+<div class="col"><label>DES</label><input type="number" step="0.01" data-field="des"></div>
+<div class="col"><label>VIG</label><input type="number" step="0.01" data-field="vig"></div>
+<div class="col"><label>APA</label><input type="number" step="0.01" data-field="apa"></div>
+<div class="col"><label>CAR</label><input type="number" step="0.01" data-field="car"></div>
+<div class="col"><label>MAN</label><input type="number" step="0.01" data-field="man"></div>
+<div class="col"><label>PER</label><input type="number" step="0.01" data-field="per"></div>
+<div class="col"><label>INT</label><input type="number" step="0.01" data-field="int"></div>
+<div class="col"><label>RAC</label><input type="number" step="0.01" data-field="rac"></div>
+</div>
 
-  <div class="card">
-    <h2>Perícias</h2>
-    <div class="pericias" id="pericias"></div>
-    <button class="secondary" onclick="addCustomSkill()">Adicionar Perícia</button>
-  </div>
+<h2>Status</h2>
+<div class="row">
+<div class="col"><label>Vida</label><input type="number" step="0.01" data-field="vida"></div>
+<div class="col"><label>Foco</label><input type="number" step="0.01" data-field="foco"></div>
+<div class="col"><label>Mov</label><input type="number" step="0.01" data-field="mov"></div>
+<div class="col"><label>Armadura</label><input type="number" step="0.01" data-field="arm"></div>
+</div>
+</div>
 
-  <div class="card combate">
-    <h2>⚔ Combate</h2>
-    <table>
-      <thead><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Dist.</th><th>Tipo</th><th>Peso</th></tr></thead>
-      <tbody id="armas"></tbody>
-    </table>
-    <button class="secondary" onclick="addRow('armas',6)">Adicionar Arma</button>
-  </div>
+<div class="card">
+<h2>Perícias</h2>
+<div id="pericias" class="pericias"></div>
+<button class="secondary" onclick="addCustomSkill()">Adicionar Perícia</button>
+</div>
 
-  <div class="card">
-    <h2>Status</h2>
-    <div class="grid-2">
-      <div><label>Vida</label><input data-field="vida" type="number" step="0.01" /></div>
-      <div><label>Foco / Energia</label><input data-field="foco" type="number" step="0.01" /></div>
-      <div><label>Movimento</label><input data-field="movimento" type="number" step="0.01" /></div>
-      <div><label>Armadura</label><input data-field="armadura" type="number" step="0.01" /></div>
-    </div>
-  </div>
+<div class="card combate">
+<h2>⚔ Combate</h2>
+<table>
+<thead><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Dist</th><th>Tipo</th><th>Peso</th></tr></thead>
+<tbody id="armas"></tbody>
+</table>
+<button class="secondary" onclick="addRow('armas',6)">Adicionar Arma</button>
+</div>
 
-  <div class="card">
-    <h2>Inventário</h2>
-    <table>
-      <thead><tr><th>Nome</th><th>Qtd</th><th>Custo</th></tr></thead>
-      <tbody id="inventario"></tbody>
-    </table>
-    <button class="secondary" onclick="addRow('inventario',3)">Adicionar Item</button>
-  </div>
+<div class="card">
+<h2>Habilidades ETLANS</h2>
+<table>
+<thead><tr><th>Nome</th><th>Qtd</th><th>Efeito</th><th></th></tr></thead>
+<tbody id="etlans"></tbody>
+</table>
+<button class="secondary" onclick="addEtlans()">Adicionar Habilidade</button>
+</div>
 
-  <div class="card">
-    <h2>Habilidades ETLANS</h2>
-    <textarea data-field="etlans"></textarea>
-  </div>
+<div class="card">
+<h2>Inventário</h2>
+<table>
+<thead><tr><th>Nome</th><th>Qtd</th><th>Custo</th></tr></thead>
+<tbody id="inventario"></tbody>
+</table>
+<button class="secondary" onclick="addRow('inventario',3)">Adicionar Item</button>
+</div>
 
-  <div class="card">
-    <h2>Anotações</h2>
-    <textarea data-field="anotacoes"></textarea>
-  </div>
+<div class="card">
+<h2>Anotações</h2>
+<textarea data-field="anotacoes" style="min-height:120px"></textarea>
+</div>
 
 </div>
 
 <div class="actions">
-  <button onclick="saveSheet()">Salvar</button>
-  <button class="secondary" onclick="loadSheet()">Carregar</button>
+<button onclick="saveSheet()">Salvar</button>
+<button class="secondary" onclick="loadSheet()">Carregar</button>
 </div>
 
-<audio id="click" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA="></audio>
-
 <script>
-  const skillList = [
-    'Acadêmicos','Arma à Distância','Arma Branca','Atletismo','Ciências','Direito','Empatia','Empatia c/ Animais','Esquiva','Etiqueta','Expressão','Finanças','Furtividade','Intimidação','Investigação','Lábia','Liderança','Linguística','Luta','Manha','Medicina','Ocultismo','Ofício','Performance','Política','Prontidão','Resistência','Sobrevivência'
-  ];
+const baseSkills=['Acadêmicos','Arma à Distância','Arma Branca','Atletismo','Ciências','Direito','Empatia','Empatia c/ Animais','Esquiva','Etiqueta','Expressão','Finanças','Furtividade','Intimidação','Investigação','Lábia','Liderança','Linguística','Luta','Manha','Medicina','Ocultismo','Ofício','Performance','Política','Prontidão','Resistência','Sobrevivência'];
+const pericias=document.getElementById('pericias');
+baseSkills.forEach(n=>addSkill(n,false));
 
-  const periciasDiv = document.getElementById('pericias');
+function addSkill(name,removable){
+ const lbl=document.createElement('label');lbl.textContent=name;
+ const inp=document.createElement('input');inp.type='number';inp.step='0.01';
+ pericias.append(lbl,inp);
+ if(removable){
+  const btn=document.createElement('button');btn.textContent='✕';btn.className='danger';
+  btn.onclick=()=>{lbl.remove();inp.remove();btn.remove();};
+  pericias.appendChild(btn);
+ }else pericias.appendChild(document.createElement('span'));
+}
 
-  skillList.forEach(name => createSkill(name));
-
-  function createSkill(name, value='') {
-    const div = document.createElement('div');
-    div.className = 'pericia';
-    div.innerHTML = `<label>${name}</label><input type="number" step="0.01" value="${value}">`;
-    periciasDiv.appendChild(div);
-  }
-
-  function addCustomSkill() {
-    const name = prompt('Nome da nova perícia:');
-    if (name) createSkill(name);
-  }
-
-  function addRow(id, cols) {
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td><input></td>'.repeat(cols);
-    document.getElementById(id).appendChild(tr);
-  }
-
-  function saveSheet() {
-    const data = {};
-    document.querySelectorAll('[data-field]').forEach(el => data[el.dataset.field] = el.value);
-    data.pericias = Array.from(document.querySelectorAll('.pericia')).map(p => ({
-      name: p.querySelector('label').innerText,
-      value: p.querySelector('input').value
-    }));
-    data.armas = document.getElementById('armas').innerHTML;
-    data.inventario = document.getElementById('inventario').innerHTML;
-    localStorage.setItem('etlans-sheet', JSON.stringify(data));
-    alert('Ficha salva');
-  }
-
-  function loadSheet() {
-    const raw = localStorage.getItem('etlans-sheet');
-    if (!raw) return;
-    const data = JSON.parse(raw);
-    document.querySelectorAll('[data-field]').forEach(el => el.value = data[el.dataset.field] || '');
-    periciasDiv.innerHTML = '';
-    data.pericias?.forEach(p => createSkill(p.name, p.value));
-    document.getElementById('armas').innerHTML = data.armas || '';
-    document.getElementById('inventario').innerHTML = data.inventario || '';
-  }
-
-  loadSheet();
+function addCustomSkill(){const n=prompt('Nome da perícia');if(n) addSkill(n,true)}
+function addRow(id,c){const tr=document.createElement('tr');tr.innerHTML='<td><input></td>'.repeat(c);document.getElementById(id).appendChild(tr)}
+function addEtlans(){const tr=document.createElement('tr');tr.innerHTML='<td><input></td><td><input type=number></td><td><textarea></textarea></td><td><button class=danger onclick=this.closest("tr").remove()>✕</button></td>';document.getElementById('etlans').appendChild(tr)}
+function saveSheet(){const data={};document.querySelectorAll('[data-field]').forEach(e=>data[e.dataset.field]=e.value);data.pericias=[...pericias.children].map(e=>e.tagName==='INPUT'?e.value:null);data.armas=document.getElementById('armas').innerHTML;data.inv=document.getElementById('inventario').innerHTML;data.etl=document.getElementById('etlans').innerHTML;localStorage.setItem('etlans',JSON.stringify(data));alert('Ficha salva')}
+function loadSheet(){const r=localStorage.getItem('etlans');if(!r)return;const d=JSON.parse(r);document.querySelectorAll('[data-field]').forEach(e=>e.value=d[e.dataset.field]||'');document.getElementById('armas').innerHTML=d.armas||'';document.getElementById('inventario').innerHTML=d.inv||'';document.getElementById('etlans').innerHTML=d.etl||''}
+loadSheet();
 </script>
-
 </body>
 </html>
