@@ -7,56 +7,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#0d0f14;--panel:#141826;--panel2:#1b2033;--ink:#eaeaf0;--muted:#9aa0c3;--accent:#6e78ff;--danger:#ff5c5c;--border:#2a2f4a;
+ --bg:#0b0d12;--panel:#141826;--panel2:#1c2140;--ink:#e8e9f1;--muted:#9aa0c3;--accent:#7b82ff;--danger:#ff5c5c;--border:#2a2f4a;
 }
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top,#151a2e,#0d0f14 70%);color:var(--ink);font-family:Inter,sans-serif}
-.sheet{max-width:1200px;margin:24px auto;padding:24px;background:linear-gradient(180deg,#141826,#0f1220);border:1px solid var(--border);border-radius:14px;box-shadow:0 0 40px #000}
-.title{font-family:Cinzel,serif;text-align:center;font-size:42px;letter-spacing:2px;margin-bottom:20px}
-.section{margin-bottom:22px}
-.section-title{font-family:Cinzel,serif;font-size:15px;letter-spacing:1px;color:#fff;background:linear-gradient(90deg,var(--accent),transparent);padding:6px 12px;border-radius:6px;margin-bottom:10px}
-.row{display:flex;gap:16px;flex-wrap:wrap}
-.field{display:flex;flex-direction:column;gap:4px;min-width:180px}
+body{margin:0;background:radial-gradient(circle at top,#151a2e,#0b0d12 70%);color:var(--ink);font-family:Inter,sans-serif}
+.sheet{max-width:1300px;margin:24px auto;padding:28px;background:linear-gradient(180deg,#141826,#0f1220);border:1px solid var(--border);border-radius:16px;box-shadow:0 0 40px #000}
+.title{font-family:Cinzel,serif;text-align:center;font-size:44px;letter-spacing:3px;margin-bottom:26px}
+.section{margin-bottom:26px}
+.section-title{font-family:Cinzel,serif;font-size:15px;letter-spacing:1px;color:#fff;background:linear-gradient(90deg,var(--accent),transparent);padding:6px 14px;border-radius:8px;margin-bottom:12px}
+.row{display:flex;gap:18px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:4px;min-width:220px;flex:1}
 .field label{font-size:12px;color:var(--muted)}
-.field input,.field textarea{background:var(--panel2);border:1px solid var(--border);color:var(--ink);padding:6px 8px;border-radius:6px;font-family:Inter}
-.field textarea{resize:none;min-height:70px}
-.small{width:70px}
+.field input,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink);padding:6px 4px;font-family:Inter}
+.field textarea{resize:none;min-height:80px}
+.small{width:80px}
 
-.attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.attr-block{background:var(--panel);padding:12px;border-radius:10px;border:1px solid var(--border)}
-.attr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.attrs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.attr-block{background:var(--panel);padding:14px;border-radius:12px;border:1px solid var(--border)}
+.attr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .attr span{font-size:13px}
 
-.pericias-wrap{display:grid;grid-template-columns:300px 1fr;gap:20px}
-.pericias{background:var(--panel);border-radius:10px;padding:12px;border:1px solid var(--border)}
-.pericia{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;cursor:pointer}
+.pericias-wrap{display:grid;grid-template-columns:320px 1fr;gap:26px}
+.pericias{background:var(--panel);border-radius:12px;padding:14px;border:1px solid var(--border)}
+.pericia{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;cursor:pointer}
 .pericia span{font-size:13px}
-.pericia input{width:60px}
+.pericia input{width:70px;text-align:right;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
 
-.combate{background:var(--panel);border-radius:10px;padding:12px;border:1px solid var(--border)}
+.combate{background:var(--panel);border-radius:12px;padding:14px;border:1px solid var(--border)}
 .combate table{width:100%;border-collapse:collapse}
-.combate th,.combate td{border-bottom:1px solid var(--border);padding:6px}
+.combate th,.combate td{border-bottom:1px solid var(--border);padding:8px}
 .combate th{font-size:12px;color:var(--muted)}
+.combate input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
 
-button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer}
+button{background:linear-gradient(135deg,var(--accent),#4b54ff);border:none;color:#fff;padding:7px 14px;border-radius:10px;font-size:12px;cursor:pointer}
 button.danger{background:linear-gradient(135deg,var(--danger),#c33)}
 
-.status{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
-.status-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;width:110px;padding:10px;text-align:center}
+.status{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+.status-box{background:var(--panel2);border:1px solid var(--border);border-radius:12px;width:120px;padding:12px;text-align:center}
 .status-box label{font-size:11px;color:var(--muted)}
-.status-box input{margin-top:6px;width:70px;font-size:18px;text-align:center}
+.status-box input{margin-top:8px;width:80px;font-size:20px;text-align:center;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
 
-.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.effects{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-top:12px}
 .effects label{font-size:12px}
 
+.list{display:flex;flex-direction:column;gap:10px}
+.list-item{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer;display:flex;gap:10px;flex-wrap:wrap}
+.list-item input,.list-item textarea{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--ink)}
+
+.large-notes textarea{min-height:220px;width:100%}
+
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center}
-.modal-content{background:var(--panel);padding:20px;border-radius:12px;width:320px;border:1px solid var(--border)}
-.modal-content textarea{width:100%;min-height:80px}
-
-.list{display:flex;flex-direction:column;gap:8px}
-.list-item{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:8px;cursor:pointer}
-
-.large-notes textarea{min-height:160px}
+.modal-content{background:var(--panel);padding:20px;border-radius:14px;width:360px;border:1px solid var(--border)}
+.modal-content textarea{width:100%;min-height:100px;background:transparent;border:1px solid var(--border);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -74,23 +76,52 @@ button.danger{background:linear-gradient(135deg,var(--danger),#c33)}
 
 <div class="attrs">
 <div class="attr-block"><div class="section-title">Atributos Físicos</div>
-<div class="attr"><span>Força</span><input class="small" type="number"></div>
-<div class="attr"><span>Destreza</span><input class="small" type="number"></div>
-<div class="attr"><span>Vigor</span><input class="small" type="number"></div></div>
+<div class="attr"><span>Força (FOR)</span><input class="small" type="number"></div>
+<div class="attr"><span>Destreza (DES)</span><input class="small" type="number"></div>
+<div class="attr"><span>Vigor (VIG)</span><input class="small" type="number"></div></div>
 <div class="attr-block"><div class="section-title">Atributos Sociais</div>
-<div class="attr"><span>Aparência</span><input class="small" type="number"></div>
-<div class="attr"><span>Carisma</span><input class="small" type="number"></div>
-<div class="attr"><span>Manipulação</span><input class="small" type="number"></div></div>
+<div class="attr"><span>Aparência (APA)</span><input class="small" type="number"></div>
+<div class="attr"><span>Carisma (CAR)</span><input class="small" type="number"></div>
+<div class="attr"><span>Manipulação (MAN)</span><input class="small" type="number"></div></div>
 <div class="attr-block"><div class="section-title">Atributos Mentais</div>
-<div class="attr"><span>Percepção</span><input class="small" type="number"></div>
-<div class="attr"><span>Inteligência</span><input class="small" type="number"></div>
-<div class="attr"><span>Raciocínio</span><input class="small" type="number"></div></div>
+<div class="attr"><span>Percepção (PER)</span><input class="small" type="number"></div>
+<div class="attr"><span>Inteligência (INT)</span><input class="small" type="number"></div>
+<div class="attr"><span>Raciocínio (RAC)</span><input class="small" type="number"></div></div>
 </div>
 
 <div class="pericias-wrap">
 <div class="pericias">
 <div class="section-title">Perícias</div>
-<div id="pericias" class="list"></div>
+<div id="pericias">
+<div class="pericia"><span>Acadêmicos</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Arma à Distância</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Arma Branca</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Atletismo</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Ciências</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Direito</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Empatia</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Empatia c/ Animais</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Esquiva</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Etiqueta</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Expressão</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Finanças</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Furtividade</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Intimidação</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Investigação</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Lábia</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Liderança</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Linguística</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Luta</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Manha</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Medicina</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Ocultismo</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Ofício</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Performance</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Política</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Prontidão</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Resistência</span><input type="number" step="0.01"></div>
+<div class="pericia"><span>Sobrevivência</span><input type="number" step="0.01"></div>
+</div>
 <button onclick="addPericia()">Adicionar Perícia</button>
 </div>
 
@@ -99,7 +130,7 @@ button.danger{background:linear-gradient(135deg,var(--danger),#c33)}
 <table id="armas"><tr><th>Arma</th><th>Dano</th><th>Crítico</th><th>Distância</th><th>Tipo</th><th>Peso</th></tr></table>
 <button onclick="addArma()">Adicionar Arma</button>
 
-<div class="section-title" style="margin-top:14px">Status</div>
+<div class="section-title" style="margin-top:16px">Status</div>
 <div class="status">
 <div class="status-box"><label>Vida</label><input type="number"></div>
 <div class="status-box"><label>Movimento</label><input type="number"></div>
@@ -108,7 +139,7 @@ button.danger{background:linear-gradient(135deg,var(--danger),#c33)}
 <div class="status-box"><label>Energia</label><input type="number"></div>
 </div>
 
-<div class="section-title" style="margin-top:14px">Efeitos</div>
+<div class="section-title" style="margin-top:16px">Efeitos</div>
 <div class="effects">
 <label><input type="checkbox"> Agarrado</label><label><input type="checkbox"> Amedrontado</label><label><input type="checkbox"> Atordoado</label>
 <label><input type="checkbox"> Caído</label><label><input type="checkbox"> Cego</label><label><input type="checkbox"> Envenenado</label>
@@ -164,9 +195,10 @@ function openModal(title,el){targetDelete=el;document.getElementById('modalTitle
 function closeModal(){document.getElementById('modal').style.display='none';targetDelete=null}
 function confirmDelete(){if(targetDelete)targetDelete.remove();closeModal()}
 
-function addPericia(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<strong>Nova Perícia</strong><input type="number" step="0.01">';d.ondblclick=()=>openModal('Excluir Perícia',d);document.getElementById('pericias').appendChild(d)}
-function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';}r.ondblclick=()=>openModal('Excluir Arma',r)}
-function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small">';d.ondblclick=()=>openModal('Excluir Item',d);document.getElementById('inventario').appendChild(d)}
+function addPericia(){const d=document.createElement('div');d.className='pericia';d.innerHTML='<span contenteditable>Nova Perícia</span><input type="number" step="0.01">';d.ondblclick=()=>openModal('Excluir Perícia',d);document.getElementById('pericias').appendChild(d)}
+function addArma(){const t=document.getElementById('armas');const r=t.insertRow();for(let i=0;i<6;i++){const c=r.insertCell();c.innerHTML='<input>';}
+r.ondblclick=()=>openModal('Excluir Arma',r)}
+function addItem(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Item"> <input placeholder="Peso" class="small"> <textarea placeholder="Descrição"></textarea>';d.ondblclick=()=>openModal('Excluir Item',d);document.getElementById('inventario').appendChild(d)}
 function addEtlans(){const d=document.createElement('div');d.className='list-item';d.innerHTML='<input placeholder="Nome"> <input placeholder="Qtd" class="small"> <input placeholder="Custo" class="small">';d.ondblclick=()=>openModal('Excluir Habilidade / Etlans',d);document.getElementById('etlans').appendChild(d)}
 </script>
 </body>
